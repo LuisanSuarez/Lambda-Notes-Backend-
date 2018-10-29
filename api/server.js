@@ -33,7 +33,7 @@ server.post('/notes', (req, res) => {
     })
 })
 
-server.delete('/notes', (req, res, next) => {
+server.delete('/notes', (req, res) => {
   // return res.status(200).json({message: "testing"})
   const { id } = req.body;
   // const title = db.get()
@@ -44,6 +44,22 @@ server.delete('/notes', (req, res, next) => {
     .catch(err => {
       console.error(err);
       res.status(501).json(err)
+    })
+})
+
+server.get('/notes/:id', (req, res) => {
+  const { id } = req.params;
+
+  db.findById(id)
+    .then(note => {
+      note[0]
+      ? res.status(200).json(note)
+      : res.status(200).json('No notes here!')
+    })
+    .catch(err => {
+      console.log('CATCH');
+      console.error(err);
+      res.status(404).json(err)
     })
 })
 

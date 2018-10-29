@@ -42,6 +42,32 @@ describe('server.js', () => {
 
   })
 
+  describe.only('GET notes (/notes/:id) endpoint', () => {
+
+    const id = 1
+    const noId = 100
+    const url = `/notes/${id}`
+    const noUrl = `/notes/${noId}`
+
+    it('should run and return status code 200', async () => {
+      const expected = 200
+      const response = await request(server).get(url)
+      expect(response.status).toEqual(expected)
+    })
+
+    it('should return a single note', async () => {
+      const response = await request(server).get(url)
+      expect(response.body.length).toEqual(1)
+    })
+
+    it('should return a "No notes here!" if no notes', async () => {
+      const expected = 'No notes here!'
+      const response = await request(server).get(noUrl)
+      expect(response.body).toEqual(expected)
+    })
+
+  })
+
   describe('POST notes (/notes) endpoint', () => {
     const newNote = {
       title: 'Post Test',
@@ -64,7 +90,7 @@ describe('server.js', () => {
 
   })
 
-  describe.only('DELETE notes (/notes/:id) endpoint', () => {
+  describe('DELETE notes (/notes/:id) endpoint', () => {
 
     const id = 5
 
@@ -86,6 +112,7 @@ describe('server.js', () => {
     })
 
   })
+
 
 
 })

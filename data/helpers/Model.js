@@ -15,7 +15,6 @@ module.exports = {
   }
 
   function findById(id) {
-    console.log('ID:', id);
     return db('Notes')
       .where({id: id})
   }
