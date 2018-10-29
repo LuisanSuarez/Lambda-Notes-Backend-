@@ -2,6 +2,10 @@
   "name": "Lambda-Notes-Backend-",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "test": "jest --watch --verbose",
+    "start": "nodemon"
+  },
   "repository": "https://github.com/LuisanSuarez/Lambda-Notes-Backend-.git",
   "author": "Luisan <luisangelsc@gmail.com>",
   "license": "MIT",
@@ -15,5 +19,8 @@
     "jest": "^23.6.0",
     "nodemon": "^1.18.5",
     "supertest": "^3.3.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
