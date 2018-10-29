@@ -6,7 +6,8 @@ module.exports = {
   find,
   findById,
   insert,
-  remove
+  remove,
+  edit
 }
 
 
@@ -29,6 +30,21 @@ module.exports = {
       .where('id', id)
       .del()
   }
+
+  function edit(id, newNote) {
+    return db('Notes')
+    .where('id', id)
+    .update(newNote)
+  }
+
+//   knex('books')
+// .where('published_date', '<', 2000)
+// .update({
+//   status: 'archived',
+//   thisKeyIsSkipped: undefined
+// })
+// Outputs:
+// update `books` set `status` = 'archived' where `published_date` < 2000
 
   // knex('accounts')
   // .where('activated', false)

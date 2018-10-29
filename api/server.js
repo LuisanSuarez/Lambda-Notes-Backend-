@@ -63,6 +63,33 @@ server.get('/notes/:id', (req, res) => {
     })
 })
 
+server.put('/notes/:id', (req, res) => {
+  const { title, content } = req.body
+  const { comments } = req.body || ''
+  const { id } = req.params
+  const newNote = { title, content, comments }
+  console.log(newNote);
+
+  db.edit(id, newNote)
+    .then(response => {
+      if (response) {
+
+      db.findById(id)
+        .then(editedNote => {
+          res.status(200).json(editedNote[0])
+        })
+        .catch(err => {
+          console.error(err);
+          res.status(500).send('failing inside conditional')
+        })
+      } else { res.status(511).send('failing OUTSIDE')}
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(510).json(err)
+    })
+
+})
 // server.delete('/notes/:id', (req, res) => {
   //
   // })
