@@ -20,8 +20,6 @@ server.get('/notes', (req, res) => {
 })
 
 server.post('/notes', (req, res) => {
-  console.log('START HERE');
-  console.log(req.body);
   const { title, content } = req.body
   const comments = req.body.comments || null
   const note = { title, content }
@@ -35,5 +33,22 @@ server.post('/notes', (req, res) => {
     })
 })
 
+server.delete('/notes', (req, res, next) => {
+  // return res.status(200).json({message: "testing"})
+  const { id } = req.body;
+  // const title = db.get()
+  db.remove(id)
+    .then(response => {
+      res.status(200).json(id)
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(501).json(err)
+    })
+})
+
+// server.delete('/notes/:id', (req, res) => {
+  //
+  // })
 
 module.exports = server;

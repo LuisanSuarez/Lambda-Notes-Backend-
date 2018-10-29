@@ -42,7 +42,7 @@ describe('server.js', () => {
 
   })
 
-  describe.only('POST notes (/notes) endpoint', () => {
+  describe('POST notes (/notes) endpoint', () => {
     const newNote = {
       title: 'Post Test',
       content: "This is a post test and its contents",
@@ -63,5 +63,29 @@ describe('server.js', () => {
     })
 
   })
+
+  describe.only('DELETE notes (/notes/:id) endpoint', () => {
+
+    const id = 5
+
+    it('should run and return status code 200', async () => {
+      const expected = 200
+      const response = await request(server)
+        .delete('/notes')
+        .send({ id })
+      expect(response.status).toEqual(expected)
+    })
+
+    it('should return id, error message if note is n/a'
+    , async () => {
+      const expected = id
+      const response = await request(server)
+        .delete('/notes')
+        .send({ id })
+      expect(response.body).toEqual(expected)
+    })
+
+  })
+
 
 })

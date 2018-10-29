@@ -6,7 +6,7 @@ module.exports = {
   find,
   findById,
   insert,
-  // delete
+  remove
 }
 
 
@@ -25,6 +25,12 @@ module.exports = {
       .insert(game)
   }
 
-  // function delete(id) {
-  //
-  // }
+  function remove(id) {
+    return db('Notes')
+      .where('id', id)
+      .del()
+  }
+
+  // knex('accounts')
+  // .where('activated', false)
+  // .del()
