@@ -27,7 +27,7 @@ describe('server.js', () => {
       expect(response.status).toEqual(expected)
     })
 
-    it.only('should return an array of objects', async () => {
+    it('should return an array of objects', async () => {
       const expected = 'object'
       const response = await request(server).get('/notes')
       expect(response.body.constructor === Array).toBe(true)
@@ -38,6 +38,28 @@ describe('server.js', () => {
       const expected = 3
       const response = await request(server).get('/notes')
       expect(response.body.length).toEqual(expected)
+    })
+
+  })
+
+  describe.only('POST notes (/notes) endpoint', () => {
+    const newNote = {
+      title: 'Post Test',
+      content: "This is a post test and its contents",
+      comments: "This is the comment for this note"
+    }
+
+    const newNoteNoComments = {
+      title: 'Post Test',
+      content: "This is a post test"
+    }
+
+    it('should run and return status code 200', async () => {
+      const expected = 200
+      const response = await request(server)
+        .post('/notes')
+        .send(newNoteNoComments)
+      expect(response.status).toEqual(expected)
     })
 
   })
