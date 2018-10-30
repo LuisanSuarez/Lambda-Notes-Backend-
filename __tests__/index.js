@@ -68,7 +68,7 @@ describe('server.js', () => {
 
   })
 
-  describe('POST notes (/notes) endpoint', () => {
+  describe.skip('POST notes (/notes) endpoint', () => {
     const newNote = {
       title: 'Post Test 4',
       content: "This is a post test and its contents",
