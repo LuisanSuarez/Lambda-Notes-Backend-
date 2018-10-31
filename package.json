@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose",
-    "start": "nodemon"
+    "start": "node"
   },
   "repository": "https://github.com/LuisanSuarez/Lambda-Notes-Backend-.git",
   "author": "Luisan <luisangelsc@gmail.com>",
