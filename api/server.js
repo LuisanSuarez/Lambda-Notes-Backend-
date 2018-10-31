@@ -4,6 +4,7 @@ const multer = require('multer');
 const axios = require('axios');
 
 const server = express();
+const port = process.env.PORT || 3332;
 
 server.use(express.json())
 server.use(cors());
@@ -38,9 +39,13 @@ server.post('/files', upload.single('file'), (req, res) => {
 // **ENDPOINTS BEGIN**
 // ******************
 
-server.get('/', (req,res) => {
-  res.status(200).json('running!')
-})
+// server.get('/', (req,res) => {
+//   res.status(200).json('running!')
+// })
+
+server.get('/', (req, res) => {
+  res.send(`Api running on port: ${port}`);
+});
 
 server.get('/notes', (req, res) => {
   db.find()
