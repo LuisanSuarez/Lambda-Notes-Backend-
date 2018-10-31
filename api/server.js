@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
+const axios = require('axios');
 
 const server = express();
 
@@ -18,18 +19,20 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-
 server.post('/files', upload.single('file'), (req, res) => {
+  console.log('THIS IS RUNNING');
  const file = req.file; // file passed from client
  const meta = req.body; // all other values passed from the client, like name, etc..
- axios({
-     url: `https://api.myrest.com/uploads`,
-     method: 'post',
-     data: {
-       file,
-       name: meta.name,
-     },
-   })
+ // axios({
+ //     url: `https://api.myrest.com/uploads`,
+ //     method: 'post',
+ //     data: {
+ //       file,
+ //       name: meta.name,
+ //     },
+ //   })
+ //    .then(response => { console.log(response)} )
+ //    .catch(err => { console.error(err)} )
  })
 // ******************
 // **ENDPOINTS BEGIN**
