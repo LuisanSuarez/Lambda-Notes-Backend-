@@ -1,9 +1,42 @@
 const express = require('express');
+const cors = require('cors');
+const multer = require('multer');
+const axios = require('axios');
+
 const server = express();
 
 server.use(express.json())
+server.use(cors());
 
 const db = require('../data/helpers/Model.js')
+
+const storage = multer.diskStorage({
+  destination: './files',
+  filename(req, file, cb) {
+    cb(null, `${new Date()}-${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage });
+
+server.post('/files', upload.single('file'), (req, res) => {
+  console.log('THIS IS RUNNING');
+ const file = req.file; // file passed from client
+ const meta = req.body; // all other values passed from the client, like name, etc..
+ // axios({
+ //     url: `https://api.myrest.com/uploads`,
+ //     method: 'post',
+ //     data: {
+ //       file,
+ //       name: meta.name,
+ //     },
+ //   })
+ //    .then(response => { console.log(response)} )
+ //    .catch(err => { console.error(err)} )
+ })
+// ******************
+// **ENDPOINTS BEGIN**
+// ******************
 
 server.get('/', (req,res) => {
   res.status(200).json('running!')
@@ -36,7 +69,10 @@ server.post('/notes', (req, res) => {
 server.delete('/notes', (req, res) => {
   // return res.status(200).json({message: "testing"})
   const { id } = req.body;
-  // const title = db.get()
+  console.log('// ******************');
+  console.log(req);
+  console.log(req.body);
+
   db.remove(id)
     .then(response => {
       res.status(200).json(id)

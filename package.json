@@ -4,15 +4,19 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose",
-    "start": "nodemon"
+    "start": "node"
   },
   "repository": "https://github.com/LuisanSuarez/Lambda-Notes-Backend-.git",
   "author": "Luisan <luisangelsc@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "cors": "^2.8.4",
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "knex": "^0.15.2",
+    "multer": "^1.4.1",
+    "pg": "^7.6.0",
     "sqlite3": "^4.0.3"
   },
   "devDependencies": {
