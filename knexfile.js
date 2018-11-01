@@ -16,6 +16,7 @@ module.exports = {
     },
     useNullAsDefault: true,
     migrations: {
+      tableName: 'table_notes',
       directory: './data/migrations',
     },
     seeds: {
@@ -30,7 +31,7 @@ module.exports = {
       max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations',
+      tableName: 'table_notes',
       directory: './db/migrations',
     },
     seeds: {
