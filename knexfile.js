@@ -2,7 +2,7 @@ require('dotenv').config();
 const localPg = {
   host: 'localhost',
   database: 'notes',
-  user: process.env.DB_user,
+  user: process.env.DB_USER,
   password: process.env.DB_PASS,
 }
 const dbConnection = process.env.DATABASE_URL || localPg
