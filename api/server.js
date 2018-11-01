@@ -20,21 +20,21 @@ const db = require('../data/helpers/Model.js')
 
 // const upload = multer({ storage });
 
-server.post('/files', upload.single('file'), (req, res) => {
-  console.log('THIS IS RUNNING');
- const file = req.file; // file passed from client
- const meta = req.body; // all other values passed from the client, like name, etc..
- // axios({
- //     url: `https://api.myrest.com/uploads`,
- //     method: 'post',
- //     data: {
- //       file,
- //       name: meta.name,
- //     },
- //   })
- //    .then(response => { console.log(response)} )
- //    .catch(err => { console.error(err)} )
- })
+// server.post('/files', upload.single('file'), (req, res) => {
+//   console.log('THIS IS RUNNING');
+//  const file = req.file; // file passed from client
+//  const meta = req.body; // all other values passed from the client, like name, etc..
+//  // axios({
+//  //     url: `https://api.myrest.com/uploads`,
+//  //     method: 'post',
+//  //     data: {
+//  //       file,
+//  //       name: meta.name,
+//  //     },
+//  //   })
+//  //    .then(response => { console.log(response)} )
+//  //    .catch(err => { console.error(err)} )
+//  })
 // ******************
 // **ENDPOINTS BEGIN**
 // ******************
@@ -70,6 +70,7 @@ server.post('/notes', (req, res) => {
       res.status(500).json(err)
     })
 })
+
 
 server.delete('/notes', (req, res) => {
   // return res.status(200).json({message: "testing"})
