@@ -32,10 +32,10 @@ module.exports = {
     },
     migrations: {
       tableName: 'table_notes',
-      directory: './db/migrations',
+      directory: './data/migrations',
     },
     seeds: {
-      directory: './db/seeds',
+      directory: './data/seeds',
     },
   },
 };
