@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const multer = require('multer');
+// const multer = require('multer');
 const axios = require('axios');
 
 const server = express();
@@ -11,14 +11,14 @@ server.use(cors());
 
 const db = require('../data/helpers/Model.js')
 
-const storage = multer.diskStorage({
-  destination: './files',
-  filename(req, file, cb) {
-    cb(null, `${new Date()}-${file.originalname}`);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: './files',
+//   filename(req, file, cb) {
+//     cb(null, `${new Date()}-${file.originalname}`);
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 server.post('/files', upload.single('file'), (req, res) => {
   console.log('THIS IS RUNNING');
