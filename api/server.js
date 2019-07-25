@@ -4,7 +4,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const server = express();
-const port = process.env.PORT || 3332;
+const port = 8000;
 
 server.use(express.json())
 server.use(cors());
