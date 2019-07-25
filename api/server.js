@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 // const multer = require('multer');
 const axios = require('axios');
 
 const server = express();
-const port = 8000;
+const port = process.env.PORT || 7000;
 
 server.use(express.json())
 server.use(cors());
